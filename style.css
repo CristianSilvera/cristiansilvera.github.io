@@ -300,6 +300,8 @@ section:last-child {
 .sectionContent {
   float: right;
   width: 72.5%;
+  text-align: justify;
+  line-height: 1.5;
 }
 
 .sectionTitle h1 {
