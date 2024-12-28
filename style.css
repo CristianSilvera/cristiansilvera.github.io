@@ -297,11 +297,17 @@ section:last-child {
   width: 25%;
 }
 
-.sectionContent {
+.sectionContent_1 {
   float: right;
   width: 72.5%;
   text-align: justify;
-  line-height: 1.5;
+}
+
+.sectionContent {
+  float: right;
+  width: 72.5%;
+  /* text-align: justify; */
+  /* line-height: 1.5; */
 }
 
 .sectionTitle h1 {
@@ -371,7 +377,7 @@ section:last-child {
     text-align: center;
   }
   
-  .sectionTitle, .sectionContent {
+  .sectionTitle, .sectionContent, .sectionContent_1 {
     float: none;
     width: 100%;
   }
