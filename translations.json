@@ -1,437 +1,160 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Cristian Silvera - QA Engineer, Software Tester y Test Automation"
-    >
-
-    <title>Cristian Silvera - QA Engineer | Software Tester</title>
-
-    <link rel="icon" type="image/svg+xml" href="images/Icon-doc.svg">
-    <link rel="stylesheet" href="style.css">
-
-    <script src="darkmode.js" defer></script>
-    <script src="language.js" defer></script>
-    <script src="script.js" defer></script>
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    >
-</head>
-
-<body>
-
-<header class="site-header">
-
-    <div class="header-controls">
-
-        <button
-            id="theme-switch"
-            type="button"
-            aria-label="Cambiar modo oscuro"
-        >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                aria-hidden="true"
-            >
-                <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
-            </svg>
-
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                aria-hidden="true"
-            >
-                <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/>
-            </svg>
-        </button>
-
-        <select id="language-switch" aria-label="Select language">
-            <option value="es" selected>Español</option>
-            <option value="en">English</option>
-            <option value="pt">Português</option>
-        </select>
-
-    </div>
-
-    <div class="header-info">
-
-        <h1 data-lang-key="title">
-            Cristian Silvera
-        </h1>
-
-        <h2 data-lang-key="professional-title">
-            QA Engineer | Software Tester | Test Automation
-        </h2>
-
-        <p class="location" data-lang-key="location">
-            Carmelo, Uruguay
-        </p>
-
-        <p class="email">
-            <span aria-hidden="true">✉️</span>
-            <a href="mailto:cristiansilv eraa@gmail.com">
-                <span data-lang-key="email">
-                    cristiansilveraa@gmail.com
-                </span>
-            </a>
-        </p>
-
-        <div class="header-actions">
-
-            <a
-                class="cta-button"
-                href="CV-Cristian-Silvera.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                data-lang-key="download-cv"
-            >
-                Descargar CV PDF
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<main>
-
-    <!-- PERFIL PROFESIONAL -->
-    <section id="profile">
-
-        <h2 data-lang-key="profile">
-            Perfil profesional
-        </h2>
-
-        <p data-lang-key="profile-text">
-            Profesional de QA y Testing de Software con experiencia en
-            validación y aseguramiento de calidad de aplicaciones bancarias
-            y financieras. Especializado en pruebas funcionales de servicios
-            digitales, aplicaciones móviles y webapps, con conocimientos en
-            automatización, APIs, bases de datos SQL y procesos de calidad
-            de software.
-        </p>
-
-    </section>
-
-
-    <!-- EXPERIENCIA -->
-    <section id="experience">
-
-        <h2 data-lang-key="experience">
-            Experiencia profesional
-        </h2>
-
-        <article class="experience-item">
-
-            <h3 data-lang-key="experience-1-title">
-                QA Engineer / Software Tester
-            </h3>
-
-            <p
-                class="subDetails"
-                data-lang-key="experience-1-sector"
-            >
-                Software Testing | FinTech | Banking
-            </p>
-
-            <p data-lang-key="experience-1-description">
-                Experiencia en pruebas funcionales y aseguramiento de calidad
-                de aplicaciones y servicios digitales, incluyendo aplicaciones
-                móviles y web, validación de funcionalidades, controles de
-                seguridad, usabilidad y comportamiento de servicios relacionados
-                con el sector financiero.
-            </p>
-
-        </article>
-
-    </section>
-
-
-    <!-- HABILIDADES -->
-    <section id="skills">
-
-        <h2 data-lang-key="skills">
-            Habilidades técnicas
-        </h2>
-
-        <div class="skills-list">
-
-            <span>Software Testing</span>
-            <span>QA</span>
-            <span>Functional Testing</span>
-            <span>Test Automation</span>
-            <span>API Testing</span>
-            <span>SQL</span>
-            <span>Mobile Testing</span>
-            <span>Web Testing</span>
-            <span>FinTech</span>
-            <span>Agile</span>
-            <span>Test Documentation</span>
-            <span>Database Testing</span>
-
-        </div>
-
-    </section>
-
-
-    <!-- ÁREAS DE CONOCIMIENTO -->
-    <section id="knowledge">
-
-        <h2 data-lang-key="knowledge-areas">
-            Áreas de conocimiento
-        </h2>
-
-        <p data-lang-key="knowledge-areas-text">
-            Testing de Software | Automatización de Software |
-            Pruebas funcionales | API Testing | Bases de datos SQL |
-            Mobile Testing | Web Testing | Documentación de procesos |
-            Infraestructura de redes | Desarrollo de Software Agile
-        </p>
-
-    </section>
-
-
-    <!-- PROYECTOS -->
-    <section id="projects">
-
-        <h2 data-lang-key="projects">
-            Proyectos destacados
-        </h2>
-
-        <article class="project-item">
-
-            <h3 data-lang-key="project-1-title">
-                Automatización Inteligente: Testing Funcional con IA
-            </h3>
-
-            <p data-lang-key="project-1-description">
-                Proyecto académico orientado a la automatización de pruebas
-                funcionales mediante técnicas de Self-Healing, pruebas
-                visuales e inteligencia artificial. Implementación de
-                automatización sobre Android utilizando Appium, WebdriverIO,
-                TypeScript y Cucumber.
-            </p>
-
-            <p class="project-technologies">
-                <strong data-lang-key="technologies">
-                    Tecnologías:
-                </strong>
-
-                TypeScript | WebdriverIO | Appium | Cucumber |
-                Android | Ollama | LLM | Allure
-            </p>
-
-        </article>
-
-
-        <article class="project-item">
-
-            <h3 data-lang-key="project-2-title">
-                Proyectos de Testing de Aplicaciones Financieras
-            </h3>
-
-            <p data-lang-key="project-2-description">
-                Experiencia en validación de aplicaciones y servicios
-                financieros, incluyendo pruebas de funcionalidades críticas,
-                autenticación, transacciones, APIs, bases de datos y
-                dependencias con servicios externos.
-            </p>
-
-        </article>
-
-    </section>
-
-
-    <!-- FORMACIÓN -->
-    <section id="education">
-
-        <h2 data-lang-key="education">
-            Formación
-        </h2>
-
-        <article>
-
-            <h3 data-lang-key="education-1-title">
-                GERENCIA DE CALIDAD Y TESTING DE SOFTWARE
-            </h3>
-
-            <p class="subDetails" data-lang-key="education-1-year">
-                2024
-            </p>
-
-            <p data-lang-key="education-1-description">
-                CES - Centro de Ensayos de Software -
-                Programa de Educación Permanente - Fing UDELAR.
-            </p>
-
-        </article>
-
-
-        <article>
-
-            <h3 data-lang-key="education-2-title">
-                TESTER PROFESIONAL DE SOFTWARE
-            </h3>
-
-            <p class="subDetails" data-lang-key="education-2-year">
-                2023
-            </p>
-
-            <p data-lang-key="education-2-description">
-                CES - Centro de Ensayos de Software -
-                Programa de Educación Permanente - Fing UDELAR.
-            </p>
-
-        </article>
-
-
-        <article>
-
-            <h3 data-lang-key="education-3-title">
-                TESTER DE SOFTWARE
-            </h3>
-
-            <p class="subDetails" data-lang-key="education-3-year">
-                2022
-            </p>
-
-            <p data-lang-key="education-3-description">
-                CES - Centro de Ensayos de Software -
-                Programa de Educación Permanente - Fing UDELAR.
-            </p>
-
-        </article>
-
-
-        <article>
-
-            <h3 data-lang-key="education-4-title">
-                LICENCIATURA EN TECNOLOGÍA DE LA INFORMACIÓN
-            </h3>
-
-            <p class="subDetails" data-lang-key="education-4-year">
-                2016
-            </p>
-
-            <p data-lang-key="education-4-description">
-                UTEC - Universidad Tecnológica | Uruguay.
-            </p>
-
-        </article>
-
-    </section>
-
-
-    <!-- IDIOMAS -->
-    <section id="languages">
-
-        <h2 data-lang-key="languages">
-            Idiomas
-        </h2>
-
-        <ul>
-
-            <li data-lang-key="language-1">
-                Inglés (Intermedio)
-            </li>
-
-            <li data-lang-key="language-2">
-                Portugués (Intermedio)
-            </li>
-
-            <li data-lang-key="language-3">
-                Español (Nativo)
-            </li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- CONTACTO -->
-    <section id="contact">
-
-        <h2 data-lang-key="contact">
-            Contacto
-        </h2>
-
-        <p data-lang-key="contact-text">
-            Disponible para oportunidades profesionales en QA,
-            Software Testing y Test Automation.
-        </p>
-
-        <p>
-            <a href="mailto:cristiansilveraa@gmail.com">
-                cristiansilveraa@gmail.com
-            </a>
-        </p>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="social-menu">
-
-        <ul>
-
-            <li>
-                <a
-                    href="https://github.com/CristianSilvera"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                >
-                    <img
-                        src="images/personaje-github.png"
-                        alt="GitHub"
-                        width="30"
-                        height="30"
-                    >
-                </a>
-            </li>
-
-            <li>
-                <a
-                    href="https://www.linkedin.com/in/cristian-silvera"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                >
-                    <img
-                        src="images/linkedin.png"
-                        alt="LinkedIn"
-                        width="30"
-                        height="30"
-                    >
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-    <p class="copyright">
-        © <span id="current-year"></span> Cristian Silvera
-    </p>
-
-</footer>
-
-</body>
-</html>
+{
+  "es": {
+    "title": "Cristian Silvera",
+    "professional-title": "QA Engineer | Software Tester | Test Automation",
+    "location": "Carmelo, Uruguay",
+    "email": "cristiansilveraa@gmail.com",
+    "download-cv": "Descargar CV PDF",
+
+    "profile": "Perfil profesional",
+    "profile-text": "Profesional de QA y Testing de Software con experiencia en validación y aseguramiento de calidad de aplicaciones bancarias y financieras. Especializado en pruebas funcionales de servicios digitales, aplicaciones móviles y webapps, con conocimientos en automatización, APIs, bases de datos SQL y procesos de calidad de software.",
+
+    "experience": "Experiencia profesional",
+    "experience-1-title": "QA Engineer / Software Tester",
+    "experience-1-sector": "Software Testing | FinTech | Banking",
+    "experience-1-description": "Experiencia en pruebas funcionales y aseguramiento de calidad de aplicaciones y servicios digitales, incluyendo aplicaciones móviles y web, validación de funcionalidades, controles de seguridad, usabilidad y comportamiento de servicios relacionados con el sector financiero.",
+
+    "skills": "Habilidades técnicas",
+
+    "projects": "Proyectos destacados",
+    "project-1-title": "Automatización Inteligente: Testing Funcional con IA",
+    "project-1-description": "Proyecto académico orientado a la automatización de pruebas funcionales mediante técnicas de Self-Healing, pruebas visuales e inteligencia artificial. Implementación de automatización sobre Android utilizando Appium, WebdriverIO, TypeScript y Cucumber.",
+    "technologies": "Tecnologías:",
+    "project-2-title": "Proyectos de Testing de Aplicaciones Financieras",
+    "project-2-description": "Experiencia en validación de aplicaciones y servicios financieros, incluyendo pruebas de funcionalidades críticas, autenticación, transacciones, APIs, bases de datos y dependencias con servicios externos.",
+
+    "knowledge-areas": "Áreas de conocimiento",
+    "knowledge-areas-text": "Testing de Software | Automatización de Software | Pruebas funcionales | API Testing | Bases de datos SQL | Mobile Testing | Web Testing | Documentación de procesos | Infraestructura de redes | Desarrollo de Software Agile",
+
+    "education": "Formación",
+    "education-1-title": "GERENCIA DE CALIDAD Y TESTING DE SOFTWARE",
+    "education-1-year": "2024",
+    "education-1-description": "CES - Centro de Ensayos de Software - Programa de Educación Permanente - Fing UDELAR.",
+
+    "education-2-title": "TESTER PROFESIONAL DE SOFTWARE",
+    "education-2-year": "2023",
+    "education-2-description": "CES - Centro de Ensayos de Software - Programa de Educación Permanente - Fing UDELAR.",
+
+    "education-3-title": "TESTER DE SOFTWARE",
+    "education-3-year": "2022",
+    "education-3-description": "CES - Centro de Ensayos de Software - Programa de Educación Permanente - Fing UDELAR.",
+
+    "education-4-title": "LICENCIATURA EN TECNOLOGÍA DE LA INFORMACIÓN",
+    "education-4-year": "2016",
+    "education-4-description": "UTEC - Universidad Tecnológica | Uruguay.",
+
+    "languages": "Idiomas",
+    "language-1": "Inglés (Intermedio)",
+    "language-2": "Portugués (Intermedio)",
+    "language-3": "Español (Nativo)",
+
+    "contact": "Contacto",
+    "contact-text": "Disponible para oportunidades profesionales en QA, Software Testing y Test Automation."
+  },
+
+  "en": {
+    "title": "Cristian Silvera",
+    "professional-title": "QA Engineer | Software Tester | Test Automation",
+    "location": "Carmelo, Uruguay",
+    "email": "cristiansilveraa@gmail.com",
+    "download-cv": "Download CV PDF",
+
+    "profile": "Professional Profile",
+    "profile-text": "QA and Software Testing professional with experience in validation and quality assurance of banking and financial applications. Specialized in functional testing of digital services, mobile applications and web applications, with knowledge of automation, APIs, SQL databases and software quality processes.",
+
+    "experience": "Professional Experience",
+    "experience-1-title": "QA Engineer / Software Tester",
+    "experience-1-sector": "Software Testing | FinTech | Banking",
+    "experience-1-description": "Experience in functional testing and quality assurance of applications and digital services, including mobile and web applications, functionality validation, security controls, usability and behavior of services related to the financial sector.",
+
+    "skills": "Technical Skills",
+
+    "projects": "Featured Projects",
+    "project-1-title": "Intelligent Automation: Functional Testing with AI",
+    "project-1-description": "Academic project focused on functional test automation using Self-Healing techniques, visual testing and artificial intelligence. Implementation of Android automation using Appium, WebdriverIO, TypeScript and Cucumber.",
+    "technologies": "Technologies:",
+    "project-2-title": "Financial Application Testing Projects",
+    "project-2-description": "Experience validating financial applications and services, including critical functionality, authentication, transactions, APIs, databases and dependencies on external services.",
+
+    "knowledge-areas": "Knowledge Areas",
+    "knowledge-areas-text": "Software Testing | Software Automation | Functional Testing | API Testing | SQL Databases | Mobile Testing | Web Testing | Process Documentation | Network Infrastructure | Agile Software Development",
+
+    "education": "Education",
+    "education-1-title": "QUALITY MANAGEMENT AND SOFTWARE TESTING",
+    "education-1-year": "2024",
+    "education-1-description": "CES - Centro de Ensayos de Software - Permanent Education Program - Fing UDELAR.",
+
+    "education-2-title": "PROFESSIONAL SOFTWARE TESTER",
+    "education-2-year": "2023",
+    "education-2-description": "CES - Centro de Ensayos de Software - Permanent Education Program - Fing UDELAR.",
+
+    "education-3-title": "SOFTWARE TESTER",
+    "education-3-year": "2022",
+    "education-3-description": "CES - Centro de Ensayos de Software - Permanent Education Program - Fing UDELAR.",
+
+    "education-4-title": "BACHELOR'S DEGREE IN INFORMATION TECHNOLOGY",
+    "education-4-year": "2016",
+    "education-4-description": "UTEC - Technological University | Uruguay.",
+
+    "languages": "Languages",
+    "language-1": "English (Intermediate)",
+    "language-2": "Portuguese (Intermediate)",
+    "language-3": "Spanish (Native)",
+
+    "contact": "Contact",
+    "contact-text": "Available for professional opportunities in QA, Software Testing and Test Automation."
+  },
+
+  "pt": {
+    "title": "Cristian Silvera",
+    "professional-title": "QA Engineer | Testador de Software | Automação de Testes",
+    "location": "Carmelo, Uruguai",
+    "email": "cristiansilveraa@gmail.com",
+    "download-cv": "Baixar CV em PDF",
+
+    "profile": "Perfil profissional",
+    "profile-text": "Profissional de QA e Teste de Software com experiência em validação e garantia de qualidade de aplicações bancárias e financeiras. Especializado em testes funcionais de serviços digitais, aplicações móveis e web, com conhecimentos em automação, APIs, bancos de dados SQL e processos de qualidade de software.",
+
+    "experience": "Experiência profissional",
+    "experience-1-title": "QA Engineer / Testador de Software",
+    "experience-1-sector": "Teste de Software | FinTech | Banking",
+    "experience-1-description": "Experiência em testes funcionais e garantia de qualidade de aplicações e serviços digitais, incluindo aplicações móveis e web, validação de funcionalidades, controles de segurança, usabilidade e comportamento de serviços relacionados ao setor financeiro.",
+
+    "skills": "Habilidades técnicas",
+
+    "projects": "Projetos em destaque",
+    "project-1-title": "Automação Inteligente: Teste Funcional com IA",
+    "project-1-description": "Projeto acadêmico focado na automação de testes funcionais utilizando técnicas de Self-Healing, testes visuais e inteligência artificial. Implementação de automação Android utilizando Appium, WebdriverIO, TypeScript e Cucumber.",
+    "technologies": "Tecnologias:",
+    "project-2-title": "Projetos de Teste de Aplicações Financeiras",
+    "project-2-description": "Experiência na validação de aplicações e serviços financeiros, incluindo funcionalidades críticas, autenticação, transações, APIs, bancos de dados e dependências de serviços externos.",
+
+    "knowledge-areas": "Áreas de conhecimento",
+    "knowledge-areas-text": "Teste de Software | Automação de Software | Testes funcionais | API Testing | Bancos de Dados SQL | Testes Mobile | Testes Web | Documentação de processos | Infraestrutura de redes | Desenvolvimento Ágil de Software",
+
+    "education": "Formação",
+    "education-1-title": "GERÊNCIA DE QUALIDADE E TESTE DE SOFTWARE",
+    "education-1-year": "2024",
+    "education-1-description": "CES - Centro de Ensayos de Software - Programa de Educação Permanente - Fing UDELAR.",
+
+    "education-2-title": "TESTADOR PROFISSIONAL DE SOFTWARE",
+    "education-2-year": "2023",
+    "education-2-description": "CES - Centro de Ensayos de Software - Programa de Educação Permanente - Fing UDELAR.",
+
+    "education-3-title": "TESTADOR DE SOFTWARE",
+    "education-3-year": "2022",
+    "education-3-description": "CES - Centro de Ensayos de Software - Programa de Educação Permanente - Fing UDELAR.",
+
+    "education-4-title": "BACHARELADO EM TECNOLOGIA DA INFORMAÇÃO",
+    "education-4-year": "2016",
+    "education-4-description": "UTEC - Universidade Tecnológica | Uruguai.",
+
+    "languages": "Idiomas",
+    "language-1": "Inglês (Intermediário)",
+    "language-2": "Português (Intermediário)",
+    "language-3": "Espanhol (Nativo)",
+
+    "contact": "Contato",
+    "contact-text": "Disponível para oportunidades profissionais em QA, Teste de Software e Automação de Testes."
+  }
+}
