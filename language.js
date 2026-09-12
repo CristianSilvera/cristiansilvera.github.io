@@ -1,87 +1,105 @@
-```javascript
-// =========================================
-// SISTEMA DE IDIOMAS
-// =========================================
-
-const languageSwitch = document.getElementById('language-switch');
-
-const translatePage = async (lang) => {
-    try {
-        // Cargar traducciones
-        const response = await fetch('./translations.json', {
-            cache: 'no-cache'
-        });
-
-        if (!response.ok) {
-            throw new Error(
-                `No se pudo cargar translations.json. HTTP ${response.status}`
-            );
-        }
-
-        const translations = await response.json();
-
-        // Verificar que exista el idioma solicitado
-        if (!translations[lang]) {
-            throw new Error(`El idioma "${lang}" no existe en translations.json`);
-        }
-
-        // Traducir elementos de la página
-        const elements = document.querySelectorAll('[data-lang-key]');
-
-        elements.forEach((element) => {
-            const key = element.getAttribute('data-lang-key');
-
-            if (translations[lang][key] !== undefined) {
-                element.textContent = translations[lang][key];
-            }
-        });
-
-        // Actualizar idioma del documento
-        document.documentElement.lang = lang;
-
-        // Actualizar título de la pestaña
-        const titles = {
-            es: 'Cristian Silvera - QA Engineer | Software Tester',
-            en: 'Cristian Silvera - QA Engineer | Software Tester',
-            pt: 'Cristian Silvera - QA Engineer | Testador de Software'
-        };
-
-        document.title = titles[lang] || titles.es;
-
-        // Guardar idioma seleccionado
-        localStorage.setItem('language', lang);
-
-        // Mantener el selector sincronizado
-        languageSwitch.value = lang;
-
-        console.log(`Idioma cambiado correctamente a: ${lang}`);
-
-    } catch (error) {
-        console.error('Error al cargar las traducciones:', error);
-    }
+// language.js
+const translations = {
+  es: {
+    "nav.about": "Sobre mí",
+    "nav.experience": "Experiencia",
+    "nav.skills": "Habilidades",
+    "nav.education": "Educación",
+    "nav.contact": "Contacto",
+    "hero.title": "Cristian Silvera",
+    "hero.subtitle": "QA Engineer | Software Tester | Test Automation",
+    "hero.description": "Asegurando la calidad del software mediante pruebas manuales y automatizadas.",
+    "btn.download": "Descargar CV",
+    "btn.contact": "Contáctame"
+    // ... el resto de tus claves
+  },
+  en: {
+    "nav.about": "About me",
+    "nav.experience": "Experience",
+    "nav.skills": "Skills",
+    "nav.education": "Education",
+    "nav.contact": "Contact",
+    "hero.title": "Cristian Silvera",
+    "hero.subtitle": "QA Engineer | Software Tester | Test Automation",
+    "hero.description": "Ensuring software quality through manual and automated testing.",
+    "btn.download": "Download CV",
+    "btn.contact": "Contact me"
+    // ... el resto de tus claves
+  }
 };
 
+const DEFAULT_LANG = "es";
 
-// =========================================
-// IDIOMA INICIAL
-// =========================================
+function applyLanguage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
 
-const savedLanguage = localStorage.getItem('language') || 'es';
+  // Elementos de texto
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key] !== undefined) {
+      // Si el elemento tiene data-i18n-attr, cambia ese atributo (ej: placeholder, title)
+      const attr = el.getAttribute("data-i18n-attr");
+      if (attr) {
+        el.setAttribute(attr, dict[key]);
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
 
-// Establecer idioma seleccionado
-languageSwitch.value = savedLanguage;
+  // Elementos con HTML (negritas, links, etc.)
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const key = el.getAttribute("data-i18n-html");
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
 
-// Traducir página
-translatePage(savedLanguage);
+  // Atributos específicos: placeholder, title, aria-label, alt
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+  });
+  document.querySelectorAll("[data-i18n-title]").forEach(el => {
+    const key = el.getAttribute("data-i18n-title");
+    if (dict[key] !== undefined) el.setAttribute("title", dict[key]);
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => {
+    const key = el.getAttribute("data-i18n-alt");
+    if (dict[key] !== undefined) el.setAttribute("alt", dict[key]);
+  });
 
+  // Actualizar <html lang>
+  document.documentElement.lang = lang;
 
-// =========================================
-// CAMBIO DE IDIOMA
-// =========================================
+  // Actualizar el texto del botón
+  const btn = document.getElementById("lang-toggle");
+  if (btn) {
+    btn.textContent = lang === "es" ? "EN" : "ES";
+    btn.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a Español");
+  }
 
-languageSwitch.addEventListener('change', (event) => {
-    const selectedLanguage = event.target.value;
+  // Guardar preferencia
+  localStorage.setItem("lang", lang);
+}
 
-    translatePage(selectedLanguage);
-});
-```
+function initLanguage() {
+  const saved = localStorage.getItem("lang");
+  const initial = saved && translations[saved] ? saved : DEFAULT_LANG;
+  applyLanguage(initial);
+
+  const btn = document.getElementById("lang-toggle");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const current = localStorage.getItem("lang") || DEFAULT_LANG;
+      const next = current === "es" ? "en" : "es";
+      applyLanguage(next);
+    });
+  }
+}
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initLanguage);
+} else {
+  initLanguage();
+}
