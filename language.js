@@ -1,28 +1,87 @@
-// Language functionality
+```javascript
+// =========================================
+// SISTEMA DE IDIOMAS
+// =========================================
+
 const languageSwitch = document.getElementById('language-switch');
 
 const translatePage = async (lang) => {
-  try {
-    const response = await fetch('translations.json');
-    const translations = await response.json();
-    const elements = document.querySelectorAll('[data-lang-key]');
+    try {
+        // Cargar traducciones
+        const response = await fetch('./translations.json', {
+            cache: 'no-cache'
+        });
 
-    elements.forEach((el) => {
-      const key = el.getAttribute('data-lang-key');
-      el.textContent = translations[lang][key] || el.textContent;
-    });
+        if (!response.ok) {
+            throw new Error(
+                `No se pudo cargar translations.json. HTTP ${response.status}`
+            );
+        }
 
-    localStorage.setItem('language', lang);
-  } catch (error) {
-    console.error('Error loading translations:', error);
-  }
+        const translations = await response.json();
+
+        // Verificar que exista el idioma solicitado
+        if (!translations[lang]) {
+            throw new Error(`El idioma "${lang}" no existe en translations.json`);
+        }
+
+        // Traducir elementos de la página
+        const elements = document.querySelectorAll('[data-lang-key]');
+
+        elements.forEach((element) => {
+            const key = element.getAttribute('data-lang-key');
+
+            if (translations[lang][key] !== undefined) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Actualizar idioma del documento
+        document.documentElement.lang = lang;
+
+        // Actualizar título de la pestaña
+        const titles = {
+            es: 'Cristian Silvera - QA Engineer | Software Tester',
+            en: 'Cristian Silvera - QA Engineer | Software Tester',
+            pt: 'Cristian Silvera - QA Engineer | Testador de Software'
+        };
+
+        document.title = titles[lang] || titles.es;
+
+        // Guardar idioma seleccionado
+        localStorage.setItem('language', lang);
+
+        // Mantener el selector sincronizado
+        languageSwitch.value = lang;
+
+        console.log(`Idioma cambiado correctamente a: ${lang}`);
+
+    } catch (error) {
+        console.error('Error al cargar las traducciones:', error);
+    }
 };
 
-// Set initial language from localStorage or default to Spanish
+
+// =========================================
+// IDIOMA INICIAL
+// =========================================
+
 const savedLanguage = localStorage.getItem('language') || 'es';
+
+// Establecer idioma seleccionado
 languageSwitch.value = savedLanguage;
+
+// Traducir página
 translatePage(savedLanguage);
 
+
+// =========================================
+// CAMBIO DE IDIOMA
+// =========================================
+
 languageSwitch.addEventListener('change', (event) => {
-  translatePage(event.target.value);
+    const selectedLanguage = event.target.value;
+
+    translatePage(selectedLanguage);
 });
+```
