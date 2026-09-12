@@ -217,6 +217,57 @@ button {
   font-size: 1rem; /* Tamaño del texto */
 }
 
+/* =========================
+   VERSIÓN PARA PDF
+   ========================= */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Ocultar elementos que no deben aparecer en el CV */
+    header,
+    .header-actions,
+    .theme-toggle,
+    .language-selector,
+    footer {
+        display: none !important;
+    }
+
+    main {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    li {
+        color: black !important;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none;
+    }
+}
+
 .email::before {
   content: "✉️";
   margin-right: 8px; /* Espacio entre el emoji y el correo */
