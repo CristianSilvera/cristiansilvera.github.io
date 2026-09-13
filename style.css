@@ -294,3 +294,12 @@ button {
 .skills-list span:last-child {
     border-right: none;
 }
+
+.copyright {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+}
