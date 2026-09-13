@@ -1,105 +1,205 @@
-// language.js
-const translations = {
-  es: {
-    "nav.about": "Sobre mí",
-    "nav.experience": "Experiencia",
-    "nav.skills": "Habilidades",
-    "nav.education": "Educación",
-    "nav.contact": "Contacto",
-    "hero.title": "Cristian Silvera",
-    "hero.subtitle": "QA Engineer | Software Tester | Test Automation",
-    "hero.description": "Asegurando la calidad del software mediante pruebas manuales y automatizadas.",
-    "btn.download": "Descargar CV",
-    "btn.contact": "Contáctame"
-    // ... el resto de tus claves
-  },
-  en: {
-    "nav.about": "About me",
-    "nav.experience": "Experience",
-    "nav.skills": "Skills",
-    "nav.education": "Education",
-    "nav.contact": "Contact",
-    "hero.title": "Cristian Silvera",
-    "hero.subtitle": "QA Engineer | Software Tester | Test Automation",
-    "hero.description": "Ensuring software quality through manual and automated testing.",
-    "btn.download": "Download CV",
-    "btn.contact": "Contact me"
-    // ... el resto de tus claves
-  }
-};
-
 const DEFAULT_LANG = "es";
+const TRANSLATIONS_FILE = "translations.json";
 
-function applyLanguage(lang) {
-  const dict = translations[lang];
-  if (!dict) return;
+/**
+ * Carga las traducciones desde translations.json
+ */
+async function loadTranslations() {
+    try {
+        const response = await fetch(TRANSLATIONS_FILE, {
+            cache: "no-cache"
+        });
 
-  // Elementos de texto
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key] !== undefined) {
-      // Si el elemento tiene data-i18n-attr, cambia ese atributo (ej: placeholder, title)
-      const attr = el.getAttribute("data-i18n-attr");
-      if (attr) {
-        el.setAttribute(attr, dict[key]);
-      } else {
-        el.textContent = dict[key];
-      }
+        if (!response.ok) {
+            throw new Error(
+                `No se pudo cargar ${TRANSLATIONS_FILE}. HTTP ${response.status}`
+            );
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error cargando translations.json:", error);
+        return null;
     }
-  });
-
-  // Elementos con HTML (negritas, links, etc.)
-  document.querySelectorAll("[data-i18n-html]").forEach(el => {
-    const key = el.getAttribute("data-i18n-html");
-    if (dict[key] !== undefined) el.innerHTML = dict[key];
-  });
-
-  // Atributos específicos: placeholder, title, aria-label, alt
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    if (dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
-  });
-  document.querySelectorAll("[data-i18n-title]").forEach(el => {
-    const key = el.getAttribute("data-i18n-title");
-    if (dict[key] !== undefined) el.setAttribute("title", dict[key]);
-  });
-  document.querySelectorAll("[data-i18n-alt]").forEach(el => {
-    const key = el.getAttribute("data-i18n-alt");
-    if (dict[key] !== undefined) el.setAttribute("alt", dict[key]);
-  });
-
-  // Actualizar <html lang>
-  document.documentElement.lang = lang;
-
-  // Actualizar el texto del botón
-  const btn = document.getElementById("lang-toggle");
-  if (btn) {
-    btn.textContent = lang === "es" ? "EN" : "ES";
-    btn.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a Español");
-  }
-
-  // Guardar preferencia
-  localStorage.setItem("lang", lang);
 }
 
-function initLanguage() {
-  const saved = localStorage.getItem("lang");
-  const initial = saved && translations[saved] ? saved : DEFAULT_LANG;
-  applyLanguage(initial);
 
-  const btn = document.getElementById("lang-toggle");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      const current = localStorage.getItem("lang") || DEFAULT_LANG;
-      const next = current === "es" ? "en" : "es";
-      applyLanguage(next);
+/**
+ * Aplica el idioma seleccionado a todos
+ * los elementos que tengan data-lang-key.
+ */
+function applyLanguage(lang, translations) {
+
+    if (!translations || !translations[lang]) {
+        console.error(`No existe el idioma: ${lang}`);
+        return;
+    }
+
+    const dictionary = translations[lang];
+
+    /*
+     * Elementos normales de texto
+     *
+     * Ejemplo:
+     * <h2 data-lang-key="profile">Perfil profesional</h2>
+     */
+    document.querySelectorAll("[data-lang-key]").forEach(element => {
+
+        const key = element.getAttribute("data-lang-key");
+
+        if (dictionary[key] !== undefined) {
+            element.textContent = dictionary[key];
+        } else {
+            console.warn(
+                `Traducción no encontrada: "${key}" para "${lang}"`
+            );
+        }
     });
-  }
+
+
+    /*
+     * Elementos que necesitan HTML interno.
+     *
+     * Ejemplo:
+     * <p data-lang-html-key="profile-text"></p>
+     */
+    document.querySelectorAll("[data-lang-html-key]").forEach(element => {
+
+        const key = element.getAttribute("data-lang-html-key");
+
+        if (dictionary[key] !== undefined) {
+            element.innerHTML = dictionary[key];
+        } else {
+            console.warn(
+                `Traducción HTML no encontrada: "${key}" para "${lang}"`
+            );
+        }
+    });
+
+
+    /*
+     * Atributos personalizados.
+     *
+     * Ejemplo:
+     * <input data-lang-key="email" data-lang-attribute="placeholder">
+     */
+    document.querySelectorAll("[data-lang-key][data-lang-attribute]").forEach(element => {
+
+        const key = element.getAttribute("data-lang-key");
+        const attribute = element.getAttribute("data-lang-attribute");
+
+        if (dictionary[key] !== undefined) {
+            element.setAttribute(attribute, dictionary[key]);
+        }
+    });
+
+
+    /*
+     * Actualizar atributo lang del documento.
+     */
+    document.documentElement.lang = lang;
+
+
+    /*
+     * Actualizar selector de idioma.
+     */
+    const languageSwitch = document.getElementById("language-switch");
+
+    if (languageSwitch) {
+        languageSwitch.value = lang;
+    }
+
+
+    /*
+     * Guardar idioma seleccionado.
+     */
+    localStorage.setItem("lang", lang);
 }
 
-// Ejecutar cuando el DOM esté listo
+
+/**
+ * Inicializa el sistema de idiomas.
+ */
+async function initLanguage() {
+
+    const translations = await loadTranslations();
+
+    if (!translations) {
+        console.error(
+            "No se pudo inicializar el sistema de idiomas."
+        );
+        return;
+    }
+
+
+    /*
+     * Recuperar idioma guardado.
+     */
+    const savedLanguage = localStorage.getItem("lang");
+
+
+    /*
+     * Determinar idioma inicial.
+     *
+     * Si existe un idioma guardado y está disponible,
+     * se utiliza.
+     *
+     * De lo contrario, se utiliza español.
+     */
+    const initialLanguage =
+        savedLanguage && translations[savedLanguage]
+            ? savedLanguage
+            : DEFAULT_LANG;
+
+
+    /*
+     * Aplicar idioma inicial.
+     */
+    applyLanguage(initialLanguage, translations);
+
+
+    /*
+     * Selector de idioma.
+     */
+    const languageSwitch = document.getElementById("language-switch");
+
+    if (languageSwitch) {
+
+        languageSwitch.addEventListener("change", function () {
+
+            const selectedLanguage = this.value;
+
+            if (translations[selectedLanguage]) {
+
+                applyLanguage(
+                    selectedLanguage,
+                    translations
+                );
+
+            } else {
+
+                console.error(
+                    `Idioma no disponible: ${selectedLanguage}`
+                );
+            }
+        });
+    }
+}
+
+
+/**
+ * Ejecutar cuando el DOM esté listo.
+ */
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initLanguage);
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initLanguage
+    );
+
 } else {
-  initLanguage();
+
+    initLanguage();
+
 }
