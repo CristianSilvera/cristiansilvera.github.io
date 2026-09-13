@@ -46,3 +46,6 @@ translatePage(savedLanguage);
 languageSwitch.addEventListener('change', (event) => {
   translatePage(event.target.value);
 });
+
+// Set current year
+document.getElementById("current-year").textContent = new Date().getFullYear();
