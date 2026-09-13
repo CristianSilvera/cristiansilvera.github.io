@@ -1,55 +1,80 @@
-// Dark mode functionality
-let darkmode = localStorage.getItem('darkmode');
-const themeSwitch = document.getElementById('theme-switch');
-const languageSwitch = document.getElementById('language-switch');
+// ==========================================
+// DARK MODE
+// ==========================================
 
+let darkmode = localStorage.getItem("darkmode");
+
+const themeSwitch = document.getElementById("theme-switch");
+
+
+// Activar modo oscuro
 const enableDarkmode = () => {
-  document.body.classList.add('darkmode');
-  localStorage.setItem('darkmode', 'active');
+
+    document.body.classList.add("darkmode");
+
+    localStorage.setItem(
+        "darkmode",
+        "active"
+    );
 };
 
+
+// Desactivar modo oscuro
 const disableDarkmode = () => {
-  document.body.classList.remove('darkmode');
-  localStorage.setItem('darkmode', null);
+
+    document.body.classList.remove("darkmode");
+
+    localStorage.setItem(
+        "darkmode",
+        "inactive"
+    );
 };
 
-if (darkmode === "active") enableDarkmode();
 
-themeSwitch.addEventListener("click", () => {
-  darkmode = localStorage.getItem('darkmode');
-  darkmode !== "active" ? enableDarkmode() : disableDarkmode();
-});
+// Recuperar preferencia guardada
+if (darkmode === "active") {
 
-// Language functionality
-const translatePage = async (lang) => {
-  try {
-    const response = await fetch('translations.json');
-    const translations = await response.json();
-    const elements = document.querySelectorAll('[data-lang-key]');
+    enableDarkmode();
 
-    elements.forEach((el) => {
-      const key = el.getAttribute('data-lang-key');
-      el.textContent = translations[lang][key] || el.textContent;
-    });
+}
 
-    localStorage.setItem('language', lang);
-  } catch (error) {
-    console.error('Error loading translations:', error);
-  }
-};
 
-// Set initial language from localStorage or default to Spanish
-const savedLanguage = localStorage.getItem('language') || 'es';
-languageSwitch.value = savedLanguage;
-translatePage(savedLanguage);
+// Botón de cambio de tema
+if (themeSwitch) {
 
-languageSwitch.addEventListener('change', (event) => {
-  translatePage(event.target.value);
-});
+    themeSwitch.addEventListener(
+        "click",
+        () => {
 
-// Set current year copyright
-const currentYear = document.getElementById("current-year");
+            darkmode =
+                localStorage.getItem("darkmode");
+
+            if (darkmode !== "active") {
+
+                enableDarkmode();
+
+            } else {
+
+                disableDarkmode();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// COPYRIGHT
+// ==========================================
+
+const currentYear =
+    document.getElementById("current-year");
 
 if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+
+    currentYear.textContent =
+        new Date().getFullYear();
+
 }
