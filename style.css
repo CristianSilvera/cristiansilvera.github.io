@@ -217,6 +217,18 @@ button {
   font-size: 1rem; /* Tamaño del texto */
 }
 
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.skills-list span:not(:last-child)::after {
+    content: "•";
+    margin: 0 10px;
+    opacity: 0.5;
+}
+
 /* =========================
    VERSIÓN PARA PDF
    ========================= */
