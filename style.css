@@ -241,6 +241,7 @@ button {
     .language-selector,
     footer {
         display: none !important;
+        padding: 20px;
     }
 
     main {
