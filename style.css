@@ -274,3 +274,21 @@ button {
   margin-right: 8px; /* Espacio entre el emoji y el correo */
   font-size: 1.2rem; /* Tamaño del emoji */
 }
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.skills-list span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.skills-list span:not(:last-child)::after {
+    content: "|";
+    margin-left: 10px;
+    margin-right: 10px;
+    opacity: 0.5;
+}
