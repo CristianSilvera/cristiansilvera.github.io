@@ -47,5 +47,9 @@ languageSwitch.addEventListener('change', (event) => {
   translatePage(event.target.value);
 });
 
-// Set current year
-document.getElementById("current-year").textContent = new Date().getFullYear();
+// Set current year copyright
+const currentYear = document.getElementById("current-year");
+
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+}
